@@ -22,3 +22,36 @@
 
 
 // SIMILAR PROBLEM OF 567 PERMUTAION OF STRING: HASH TABLE and SLICING WINDOW
+
+
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {number[]}
+ */
+var findAnagrams = function(s, p) {
+    let res = []
+    let mapS = {}
+    let mapP = {}
+    for (let i = 0; i < p.length; i++){
+        if (!mapP[p[i]]) mapP[p[i]] = 0;
+        mapP[p[i]] += 1;
+        if (!mapS[s[i]]) mapS[s[i]] = 0;
+        mapS[s[i]] += 1;
+    }
+    function check2map(map1, map2){
+        for (let i in map1){
+            if (!map1[i]) return false;
+            if (map2[i] != map1[i]) return false;
+        }
+        return true;
+    }
+    for (let i = 0; i <= s.length - p.length; i++){
+        if (check2map(mapP, mapS)) res.push(i);
+        let next_char = i + p.length;
+        if(!mapS[s[next_char]]) mapS[s[next_char]] = 0
+        mapS[s[next_char]] += 1;
+        mapS[s[i]] -= 1;
+    }
+    return res;
+};
