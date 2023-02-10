@@ -31,8 +31,9 @@
 // First, Set a queue to store all the (x,y) of land cell (which has value 1)
 // While deque is not empty{
     // Get the front cell (u)
-    //find all neighbor water cell (which has value 0) (Zi)and add to deque, increase the value of water cell by one to mark the distance from u to Zi
+    //find all neighbor water cell (which has value 0) (Zi) and add to deque, increase the value of u by one to mark the distance from u to Zi
 //} 
+// Return the founded water cell - 1 because we start finding from land cell (which has value of 1). If we can not find water cell, return -1
 
 
 
