@@ -21,9 +21,9 @@
 // Explanation: "lee", "eet" and "ode" contain 2 vowels.
 
 #include<iostream>
- #include<algorithm>
- #include<vector>
- using namespace std;
+#include<algorithm>
+#include<vector>
+using namespace std;
 
 
 class Solution {
