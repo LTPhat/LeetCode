@@ -15,7 +15,15 @@
 
 // Input: arr = [-3,0,1,-3,1,1,1,-3,10,0]
 // Output: true
+#include<iostream>
+#include<algorithm>
+#include<string>
+#include<vector>
+#include<unordered_map>
+#include<unordered_set>
 
+
+using namespace std;
 class Solution {
 public:
     bool uniqueOccurrences(vector<int>& arr) {
