@@ -67,3 +67,36 @@ class Solution(object):
             return False
         return grid(0,0)
         
+
+# 2D Tabular Sol
+
+class Solution(object):
+    def isInterleave(self, s1, s2, s3):
+        """
+        :type s1: str
+        :type s2: str
+        :type s3: str
+        :rtype: bool
+        """
+        m = len(s1)
+        n = len(s2)
+        if m + n != len(s3):
+            return False
+
+        dp = [[False] * (m + 1) for _ in range(n + 1)]
+        dp[0][0] = True
+
+        # Define first row and column dp
+        for j in range(1, m + 1):
+            dp[0][j] = dp[0][j - 1] and s1[j - 1] == s3[j - 1]
+
+        for i in range(1, n + 1):
+            dp[i][0] = dp[i - 1][0] and s2[i - 1] == s3[i - 1]
+
+        # Calculate dp[i][j], i, j >= 1
+        for i in range(1, n + 1):
+            for j in range(1, m + 1):
+                dp[i][j] = (dp[i - 1][j] and s2[i - 1] == s3[i + j - 1]) or \
+                        (dp[i][j - 1] and s1[j - 1] == s3[i + j - 1])
+
+        return dp[n][m]
