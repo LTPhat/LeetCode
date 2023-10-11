@@ -42,3 +42,34 @@ var numDifferentIntegers = function(word) {
     }
     return count.size;
 };
+
+
+
+
+
+/**
+ * @param {string} word
+ * @return {number}
+ */
+var numDifferentIntegers = function(word) {
+    let ans = [];
+        let i = 0;
+        while (i < word.length) {
+            if (!word[i].match(/\d/)) {
+                i++;
+                continue;
+            }
+            let curr = "";
+            while (i < word.length && word[i].match(/\d/)) {
+                curr += word[i];
+                i++;
+            }
+            let j = 0;
+            while (j < curr.length && curr[j] === "0") {
+                j++;
+            }
+            curr = curr.substring(j);
+            ans.push(curr);
+        }
+        return new Set(ans).size;
+};
