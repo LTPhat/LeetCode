@@ -53,3 +53,37 @@ class Solution(object):
                 char_conse += 1
         return res
                 
+
+# SOLUTION 2
+class Solution(object):
+    def create_group(self, res):
+        groups = []
+        i = 0
+        n = len(res)
+        while i < n:
+            digit = str(res[i])
+            count = 1
+            i += 1
+            while i < n and res[i] == res[i - 1]:
+                count += 1
+                i += 1
+            groups.append([count, digit])
+
+        return groups
+
+    def countAndSay(self, n):
+        """
+        :type n: int
+        :rtype: str
+        """
+        # Base case
+        if n == 1:
+            return "1"
+        prev_res = self.countAndSay(n - 1)
+        groups = self.create_group(prev_res)
+        curr_res = ""
+
+        for count, digit in groups:
+            curr_res += "{}{}".format(count, digit)
+        
+        return curr_res
