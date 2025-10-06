@@ -52,7 +52,7 @@ class Solution(object):
             
             possible = True
             bottom_rotations = 0
-            # Check if it's possible to make all bottoms equal to target
+            # Check if it's possible to make all bottoms equal to target 
             for i in range(n):
                 if bottoms[i] == target:
                     continue
